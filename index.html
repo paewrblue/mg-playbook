@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<title>Money Game (MG) — Playbook Cheat Sheet</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --ink:#e8eaed; --muted:#9aa3b2;
+    --line:#2a2f3a; --accent:#6ea8fe; --teal:#34d3b6; --amber:#f5b955; --red:#f2667c;
+    --green:#5fd38a; --purple:#b08cff; --orange:#ff9d5c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0c0e12,#12151b);color:var(--ink);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:32px 22px 80px}
+  h1{font-size:30px;margin:0 0 4px;letter-spacing:-.4px;text-wrap:balance}
+  .ver{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.8px;color:#0c0e12;
+    background:var(--orange);border-radius:6px;padding:2px 8px;vertical-align:6px;margin-left:8px}
+  h2{font-size:20px;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:10px;text-wrap:balance}
+  h2 .n{font-size:13px;color:#0c0e12;background:var(--accent);border-radius:7px;
+    width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+  p{margin:10px 0}
+  .sub{color:var(--muted);font-size:13px;margin-top:0}
+  .hero{background:linear-gradient(135deg,#1a1f2b,#141821);border:1px solid var(--line);
+    border-radius:18px;padding:24px;margin-top:18px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(255,157,92,.20),transparent 70%);}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .pill{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:130px}
+  .pill .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+  .pill .v{font-size:17px;font-weight:700;margin-top:2px}
+  .call{border-radius:14px;padding:16px 18px;margin:16px 0;border-left:4px solid;background:var(--panel)}
+  .call.tldr{border-color:var(--accent);background:linear-gradient(90deg,rgba(110,168,254,.10),transparent)}
+  .call.warn{border-color:var(--red);background:linear-gradient(90deg,rgba(242,102,124,.10),transparent)}
+  .call.good{border-color:var(--green);background:linear-gradient(90deg,rgba(95,211,138,.10),transparent)}
+  .call.note{border-color:var(--amber);background:linear-gradient(90deg,rgba(245,185,85,.08),transparent)}
+  .call .lab{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;color:var(--muted)}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;background:var(--panel);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .term{color:var(--orange);font-weight:700}
+  .g{color:var(--green)} .r{color:var(--red)} .a{color:var(--amber)} .t{color:var(--teal)} .p{color:var(--purple)}
+  .mono{font:600 12.5px ui-monospace,SFMono-Regular,Menlo,monospace}
+  .act{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+  .act .stage{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--orange)}
+  .act h3{margin:4px 0 8px;font-size:16px}
+  ul{margin:8px 0;padding-left:22px} li{margin:5px 0}
+  .foot{margin-top:44px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+<div class="wrap">
+
+<h1>Money Game <span style="color:var(--orange)">(MG)</span> — Playbook Cheat Sheet<span class="ver">v5</span></h1>
+<p class="sub">Reading Thai stocks through the operator (เจ้ามือ) lens · we are the RIDER, never the operator ·
+13 calibration rounds, ~6,000 simulated rides across the full ~860-name universe · Paewrblue Research · July 2026</p>
+
+<div class="hero">
+  <b>The one-sentence playbook:</b> an operator finances a rally to mark up ฿50M+ of inventory;
+  we detect his commitment (<span class="term">IGNITION</span>), ride the trend he pays for,
+  and leave when the trend structurally ends — never at a profit number.
+  <div class="pills">
+    <div class="pill"><div class="k">Game floor</div><div class="v">฿50M</div></div>
+    <div class="pill"><div class="k">Entry</div><div class="v">IGNITION only</div></div>
+    <div class="pill"><div class="k">Exit</div><div class="v">No target — we ride</div></div>
+    <div class="pill"><div class="k">Full-funnel edge</div><div class="v g">78% win · +20.5%/trade</div></div>
+  </div>
+</div>
+
+<div class="call warn"><div class="lab">The iron gate — never violated</div>
+MG is <b>never</b> a standalone buy reason. The complete stack is 7 lenses:
+<b>durable business · catalyst · fundamental · smart money · insider flow · technical · money game</b>.
+No researched fundamental thesis = information only, no position. MG times entries inside a zone the
+fundamentals already approve — it never widens one. A perfect footprint on a broken business is the
+operator's trade, not ours.</div>
+
+<h2><span class="n">1</span>The life of a game — where every term lives</h2>
+
+<div class="act"><div class="stage">Act 1 · The sleep</div><h3>Dormancy</h3>
+Everything is measured in <span class="term">turnover</span> = price × volume = <b>baht traded per day</b>
+(baht, not shares — the operator's math is in baht).
+<span class="term">Dormancy</span> = the <b>median</b> daily turnover of the year before (median = one-day spikes can't fake it).
+<b class="t">Deep-dormant &lt; ฿5M/day</b> is the best starting condition we measured:
+games born from deep dormancy paid <b class="g">+42%/ride</b> vs <b class="r">+3.6%</b> for already-liquid names.
+When a dead stock suddenly trades, there is only one kind of buyer it can be.</div>
+
+<div class="act"><div class="stage">Act 2 · The awakening</div><h3>The radar (watch-only, never an entry)</h3>
+<span class="term">Awakening</span> = 20-day turnover ≥5× the dormant-year median while price is still quiet
+(−15%…+15% over 20 days) and the new turnover is already game-worthy (≥฿2.5M/day).
+The extreme case we caught live: a construction name went ฿43K/day → ฿4.5M/day — a <b>104× awakening</b> — with price still flat.
+Deep-dormant pings: 60% hit +20% within 6 months, and <b>53% produce a confirmed ignition ~23 trading days later</b>.
+That month is the radar's product — time to do the fundamental homework. Buying the ping itself was tested: it loses to waiting.</div>
+
+<div class="act"><div class="stage">Act 3 · The commitment</div><h3>IGNITION — the only entry signal (all six gates green)</h3>
+<div class="tablewrap"><table>
+<tr><th>Gate</th><th>Threshold</th><th>What it means</th></tr>
+<tr><td><span class="term">Turnover surge</span></td><td class="num">≥ 2.5×</td><td>last 60d avg turnover vs the prior 60d — the burn is fresh, not old news</td></tr>
+<tr><td><span class="term">Pressure</span></td><td class="num">≥ 1.5×</td><td>baht traded on up-days ÷ baht on down-days — buyers outspending sellers, weighted by money</td></tr>
+<tr><td>Price off base</td><td class="num">+15–45%</td><td>the trend change already happened (we never front-run) but isn't exhausted</td></tr>
+<tr><td>52-week range position</td><td class="num">&lt; 85%</td><td>room left above</td></tr>
+<tr><td>Trend</td><td class="num">≥ 0.97× SMA200</td><td>below the 200-day, ALL bullish reads are suspended</td></tr>
+<tr><td>Game-worthiness</td><td class="num">≥ ฿50M/month</td><td>~1 month of turnover an operator can size a real game in — a monthly <b>capacity</b> question, never a weekly intensity question (see the graveyard)</td></tr>
+</table></div>
+<b>One entry, at ignition</b> — averaging down was tested and rejected (losers always fill the add; 61% of winners never dip 10%).
+The EMA20 pullback is only the <i>second-chance door</i> if the ignition was missed — it slightly underperforms.
+<div class="call note"><div class="lab">Execution — the reality tax, measured (1,955 rides)</div>
+The signal prints after the close → <b>enter at the next open</b>. Measured cost ≈ 1 point/trade, win rate and multibagger
+count unchanged — ignition signals do <b>not</b> gap (median overnight gap +0.0%; the operator walks price, he doesn't jump it).
+<b>Skip any entry gapping &gt;+5% over the signal close</b> (25 of 1,955 cases — free insurance), and work size at
+≤10% of the day's turnover; bigger orders scale over days or demand a bigger game.</div></div>
+
+<div class="act"><div class="stage">Act 4 · The ride</div><h3>Game clock · legs · divergence · OBV</h3>
+<ul>
+<li><span class="term">Game clock</span> — the game's birthday: the day 20d turnover holds above
+<span class="mono">max(1.5× dormant median, ฿2.5M/day)</span>. The absolute floor matters — a game needs
+game-worthy turnover in baht, not a relative blip off a dead baseline.</li>
+<li><span class="term">Legs</span> — markup waves: each run to a new high separated by a ≥10% pullback. More legs = older game.</li>
+<li><span class="term">Divergence</span> — the operator's exit fingerprint: a <b>higher price peak on a later leg with weaker RSI/MACD momentum</b>.
+Each push costs him more and moves price less — he is selling into his own rallies.</li>
+<li><span class="term">OBV</span> (on-balance volume) — the sponsorship meter: a running total that adds volume on up-days, subtracts it on down-days.
+OBV rising with price = real money staying. Price up while OBV is flat = <b class="a">hollow markup</b> — fragile; the crowd churns but nobody accumulates.</li>
+</ul>
+<div class="tablewrap"><table>
+<tr><th>Stage</th><th>Definition</th><th>What we do</th></tr>
+<tr><td><b class="g">EARLY</b></td><td>≲4 months, &lt;+50%, no divergence</td><td>the entry window (if the other 6 lenses approve)</td></tr>
+<tr><td><b class="t">MID</b></td><td>4–9 months or +50–100%, structure intact</td><td>hold; add only on EMA20-held pullbacks inside the zone</td></tr>
+<tr><td><b class="r">LATE</b></td><td>&gt;9mo OR &gt;+100% OR divergence OR weak pressure up high</td><td>strength = exit liquidity; distribute WITH the crowd</td></tr>
+<tr><td><b class="p">ENDED</b></td><td>turnover back below baseline</td><td>post-game dormancy; a NEW ignition required before any bullish read</td></tr>
+</table></div></div>
+
+<div class="act"><div class="stage">Act 5 · The exit</div><h3>The rider exit — no profit target, ever</h3>
+The operator's +20–30% markup math <b>screens games; it is never our exit</b> — we ride the whole trend. Three tripwires only:
+<ul>
+<li><b class="r">−25% close-based disaster stop</b> — wide enough to survive operator shakeouts (the median winning trade dips only −5.8% first; the deepest survivable shakeouts bottom at −20…−25%), tight enough to refuse game-deaths (−40…−90%). Tighter stops donate the position to the operator at the low.</li>
+<li><b class="t">EMA50 trail, armed at +15%</b> — arming sells nothing; from then on, 2 consecutive closes below the EMA50 = the rally is over. This is what captures the +381%-class campaign legs that every profit target amputates.</li>
+<li><b class="a">Phase overrides</b> — an ACTIVE DISTRIBUTION read, or LATE + divergence: the operator leaving IS the trend ending.</li>
+</ul>
+<b>Rotation ladder (Thai names):</b> 3 months = review only · 6 months = rotate if flat (tested: costs nothing, frees capital) · 12 months = the leash.
+A valuation target hit or the awaited catalyst printing = <i>review triggers</i>, never reflex-sells — the question is not "has the news arrived?" but "is the operator leaving on it?"
+<div class="call good"><div class="lab">Profit brackets — tested on 1,955 rides, buried</div>
+"Take the ride to +50%, then leave at the distribution phase" fired <b>5 times in 1,955 rides</b>, with outcomes identical
+to the trail — pressure never formally decays before price breaks the EMA50. <b>The trail and the distribution read are the
+same event seen from two sides.</b> Hard caps at 2x/3x fail on both metrics that matter: expectancy roughly halves AND
+return per year of capital deployed <i>falls</i> (capped rides are few and late — no recycling gain). The edge lives in a
++300–1,700% ultra-tail that every cap amputates. <b>Cap the clock, never the price</b> — the rotation ladder already
+enforces "Thai businesses are temporary" on the time axis; a GULF/DELTA-class durable business earns a structural hold
+at the 1-year review through the business lens, not through an uncapped-vs-capped rule.</div></div>
+
+<h2><span class="n">2</span>The four phases — footprints, not opinions</h2>
+<div class="tablewrap"><table>
+<tr><th>Phase</th><th>Footprint</th><th>Our stance</th></tr>
+<tr><td><b class="t">ACCUMULATION</b></td><td>volume arrives before price; stealth OBV divergence; churn days (huge value, tiny candle)</td><td><b>WATCH ONLY</b> — tested at a 34% hit rate; never front-run. Thai operators don't telegraph</td></tr>
+<tr><td><b class="g">MARKUP</b></td><td>price +15%+ on sustained surge; the story goes public; healthy = pullbacks on shrinking volume</td><td>ride if entered; never chase &gt;20% above the approved zone — that's buying the marketing</td></tr>
+<tr><td><b class="r">DISTRIBUTION</b></td><td>pressure &lt;0.8× while price holds up high; upthrusts; the story is LOUDEST here.
+<br><b>ACTIVE</b> form = weak pressure on RUNNING volume — the lethal form (62% saw &gt;15% drawdowns)</td><td>on any held name = trim review the same week</td></tr>
+<tr><td><b class="p">MARKDOWN</b></td><td>pressure &lt;0.9×, price −10%+, bids thin out, bounces on dry volume</td><td>it's over; post-game names go dormant for months</td></tr>
+</table></div>
+<div class="call note"><div class="lab">Game-aware technicals (not textbook)</div>
+<b>RSI &gt; 70 = STRENGTH</b> in a markup, not a sell — sell the <b>divergence</b>, never the overbought.
+RSI &lt; 45 = games rarely resume without a new ignition. <b>EMA20</b> = the operator's markup rail
+(healthy games hold it ≥70% of days; a break on running volume = the exit bell). <b>EMA10</b> catches half of all
+winner shakeout lows — the first 2 weeks after entry are the shakeout window: expect it, don't react to it.</div>
+
+<h2><span class="n">3</span>The funnel — where the edge actually is (full-market test, n=1,577)</h2>
+<div class="tablewrap"><table>
+<tr><th>Filter stack</th><th>n</th><th>Win</th><th>Avg/trade</th></tr>
+<tr><td>ALL market ignitions (naive signal-following)</td><td class="num">1,577</td><td class="num">44%</td><td class="num r">+2.6% (median −2.5%)</td></tr>
+<tr><td>+ deep-dormant</td><td class="num">1,140</td><td class="num">44%</td><td class="num">+4.0%</td></tr>
+<tr><td>+ story sector (ICT/health/tech-class)</td><td class="num">224</td><td class="num">57%</td><td class="num">+9.1%</td></tr>
+<tr><td>+ liquidity-expansion regime</td><td class="num">670</td><td class="num">60%</td><td class="num">+14.6%</td></tr>
+<tr><td><b>ALL THREE (the playbook)</b></td><td class="num">74</td><td class="num g"><b>78%</b></td><td class="num g"><b>+20.5%</b></td></tr>
+<tr><td>tightening/chop years — the same signal</td><td class="num">907</td><td class="num r">32%</td><td class="num r">−6.2%</td></tr>
+</table></div>
+<div class="call tldr"><div class="lab">What this means</div>
+<b>The detector alone is worth ~nothing; the funnel is everything.</b> A screener is a radar, never a signal service.
+The liquidity regime is the single biggest lever (~21 points per trade): when the tide turns,
+the correct number of new games is <b>zero</b>. Run order: liquidity regime → sector rotation → dormancy/ignition → informed money → the fundamental gate.
+The exit parameters sit on a plateau (stop 20/25/30, trail EMA30/50/100 all land within a point on identical entries) —
+<b>the edge comes from selection, never from exit tuning.</b></div>
+
+<h2><span class="n">4</span>Informed-money tells — each one calibrated, none a filter</h2>
+<div class="tablewrap"><table>
+<tr><th>Source</th><th>Bullish tell</th><th>Bearish / warning tell</th></tr>
+<tr><td>Insider filings (Form 59 / 246-2)<br><span class="sub">calibrated on 341 ignitions</span></td>
+<td><b class="g">Net insider BUYING in the 90d before ignition = +5–9 points/trade vs quiet</b> — aligned insiders in the base = informed sponsorship; in Thai small caps the operator and the insiders often share a social graph</td>
+<td><b class="r">Net SELLING pre-ignition kills the tail</b> (1 multibagger in 72 vs 4 in 75 for net-buying) = distribution confirmation · quiet at ENTRY = the modal case and the weakest class (nobody informed is buying — the other layers must carry it) · <b>ZERO filings through a big markup = the quiet flag</b> (whoever runs it isn't filing). A graded tell, never a filter — a filter would cut most winners with the losers</td></tr>
+<tr><td>Investor-forum buzz clock<br><span class="sub">calibrated on 2,685 stock-quarters</span></td>
+<td>Skilled investors active while the base is still quiet = smart accumulation · <b class="t">the QUIET ignition, where the crowd arrives later, is the multibagger shape</b></td>
+<td>Hyped names (≥14 distinct posters/qtr) run 3-month excess <b class="r">−5.0%</b>, decaying monotonically to <b class="r">−17.1% at 12m</b>; OVERHYPED (≥22) = −35.5% excess, a 15% hit rate at 12m — on a low-quality name, never enter, whatever the tape · <b>buzzed ignitions lose the tail</b> (best ride +38% vs +113% in the quiet set) — buzz-at-entry = expect one leg, review at the first trail touch</td></tr>
+<tr><td>Government procurement</td>
+<td>Volume expanding BEFORE an award = an informed game; a revenue-material award = real fuel — for contractor/SI games, the award IS the story the operator markets</td>
+<td>A game with no award and no earnings story = pure vapor, discount hard · the award stalls (no signing / re-tender) = the fuse is out — exit review regardless of the tape</td></tr>
+<tr><td>Scheduled disclosures<br><span class="sub">earnings dates + Opportunity Day</span></td>
+<td>An ignition born in an earnings window runs on DISCLOSED fundamentals: deep-dormant in-season ignitions 50% win / +5.4% / median <i>positive</i> vs 42% / +3.5% / median −3% outside — a confirmer, never a filter · a radar ping with a print inside the next ~month = the ignition date is probably <b>scheduled</b>; do the homework before it</td>
+<td>Riding INTO a scheduled print = phase re-read the same day — operators often run THROUGH the print to market the next leg; exit only if the tape corroborates</td></tr>
+</table></div>
+<div class="call tldr"><div class="lab">The buzz clock in one line</div>
+Crowd buzz arriving on a name you're riding = your <b>exit liquidity is assembling</b>. Not an instant sell —
+it starts a clock: expect the remaining upside inside ~one quarter, treat the buzz quarter as LATE-stage input,
+and sell strength <b>with</b> the crowd, never after it.</div>
+
+<h2><span class="n">5</span>Hard rules &amp; the graveyard</h2>
+<div class="call warn"><div class="lab">Hard rules</div>
+1 · No position in a pure money game — no researched fundamental case, no entry &nbsp;
+2 · No entry while on SET Cash Balance / Trading Alert &nbsp;
+3 · Never chase markup &gt;20% above the approved zone &nbsp;
+4 · A distribution read on a held name = trim review the same week &nbsp;
+5 · ฿50M is a floor — sub-scale games are retail roulette &nbsp;
+6 · Every call is written down, dated, and scored later</div>
+<div class="call good"><div class="lab">Tested and rejected — stays dead</div>
+Tight stops / EMA20 trails (operator shakeouts harvest them) · averaging down at −10% (adverse selection) ·
+profit targets and hard caps, including banking the operator's +30% and 2x/3x brackets (the tail pays for everything) ·
+valuation-stretch &amp; sell-the-news auto-exits (a +381% ride looks "farfetched" the whole way up — in a money game the
+rally is SUPPOSED to exceed sane valuation; that's the product) · forced 3-month rotation ·
+preferring the pullback entry · <b>the ฿50M-in-5-days worthiness window</b> (peak burn is a LATE-game property —
+฿50M/week on a dormant name means the marketing already worked; the gate halves the deep-dormant edge and drops the
+single best class, the gradual-burn games: +8.4%/trade, 9% multibaggers, shallowest shakeouts) ·
+<b>Fibonacci retracements</b> (winner retracements scatter 0–67%; no clustering at 38.2/50/61.8) ·
+<b>Elliott Wave</b> as formal method (unfalsifiable; its useful core — leg counting and divergence-across-peaks — is already mechanical in the game clock)</div>
+<div class="call note"><div class="lab">Two methodology laws the calibration itself taught us</div>
+<b>1 · Small samples lie.</b> Twice, a 30-name smoke test showed the OPPOSITE of the full-universe result.
+Nothing enters this playbook on less than the full ~860-name universe — full-universe or it didn't happen.
+<b>2 · The playbook is forward-validated.</b> Every fresh signal is logged at the next open against a control group of
+non-qualifying ignitions and replayed weekly under the live exit rules; if the live funnel stops beating its control,
+recalibration triggers automatically. A backtest is a hypothesis — the forward book is the referee.</div>
+
+<div class="foot">
+Methodology summary, Thai market (SET), calibrated on 10 years of daily data across ~860 names; survivorship-limited; re-calibrated yearly.
+Educational material — not investment advice. Paewrblue Research · v5 · July 2026.
+</div>
+
+</div>
+
+</body>
+</html>
